@@ -9,6 +9,7 @@
     "build": "webpack --progress --colors"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "react": "^15.4.0-rc.4",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1",
