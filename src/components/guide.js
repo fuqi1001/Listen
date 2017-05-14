@@ -1,40 +1,43 @@
 import React, { Component, PropTypes } from 'react';
-/*let Guide = React.createClass({
-    render() {
-        return (
-            <div>
-
-            </div>
-        );
-    }
-});
-*/
-
-class Guide extends Component {
-    
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
-    }
-
+import axios from 'axios';
+let Guide = React.createClass({
+    getInitialState() {
+        return {
+            link: "",
+        }
+    },
+    getMusicInfo() {
+        axios.get("https://api.imjad.cn/cloudmusic/?type=song&id=454224836&br=128000").then((res) =>{
+            this.setState({
+                        link : res.data.data[0].url
+            });  
+            console.log(res.data.data[0].url);
+        })
+        
+    },
+    forceUp() {
+        this.forceUpdate();
+    },
     componentDidMount() {
-        axios.get("https://api.imjad.cn/cloudmusic/?type=song&id=454224836&br=128000")
-            .then(res =>{
-                console.log(res);
-            })
-    }
+        console.log("link?")
+        console.log(this.state);
+    },
+    shouldComponentUpdate(){
+        alert("update")
+    },
 
     render() {
-        console.log(this);
+        //console.log(this);
         return (
             <div>
-                <video controls autoPlay="autoplay" name="media" loop>
-                    <source src="https://m7.music.126.net/20170512120703/5ec4767ac3343c3c19ac30f6dbedc8af/ymusic/b4d6/b8c0/8db3/ef806e0936f461b0e08dd4da17ce25c3.mp3" type="audio/mpeg"/>
+                <video controls autoPlay="autoplay" name="media" loop src={this.state.link}>
+                    
                 </video>
+                <button onClick={this.getMusicInfo}>Get!</button>
+                <button onClick={this.forceUp}>Update!</button>
             </div>
         )
-    }
-}
+    },
+
+})
 export default Guide;
