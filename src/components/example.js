@@ -1,5 +1,16 @@
 import React from 'react';
 var OuterComponent = React.createClass({
+    getInitialState() {
+            return {
+                name:"nobody"
+            }
+    },
+    componentDidMount() {
+        setTimeout(function(){
+            this.setState({name:"Alex"});
+        }.bind(this),2000 );
+    },
+
     render: function() {
         return (
             <div className="outer">
@@ -10,6 +21,9 @@ var OuterComponent = React.createClass({
                     <span>first message</span><br />
                     <span>Second message</span>
                 </InnerComponent>
+                <div>
+                    <strong>{this.state.name}</strong>
+                </div>  
             </div>
         );
     }

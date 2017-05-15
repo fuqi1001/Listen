@@ -6,14 +6,12 @@ let Guide = React.createClass({
             link: "",
         }
     },
-    getMusicInfo() {
-        axios.get("https://api.imjad.cn/cloudmusic/?type=song&id=454224836&br=128000").then((res) =>{
-            this.setState({
-                        link : res.data.data[0].url
-            });  
-            console.log(res.data.data[0].url);
-        })
-        
+    async getMusicInfo() {
+        console.log("run here")
+        const newLink = await axios.get("https://api.imjad.cn/cloudmusic/?type=song&id=454224836&br=128000");
+        console.log(newLink.data.data[0].url);
+        this.setState({link: newLink.data.data[0].url});
+        this.forceUpdate();
     },
     forceUp() {
         this.forceUpdate();
@@ -23,7 +21,7 @@ let Guide = React.createClass({
         console.log(this.state);
     },
     shouldComponentUpdate(){
-        alert("update")
+        //alert("update")
     },
 
     render() {

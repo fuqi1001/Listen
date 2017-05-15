@@ -3,7 +3,8 @@ module.exports = {
   entry: [
     "webpack-dev-server/client?http://localhost:9000",
     'webpack/hot/only-dev-server',
-    "./src/index"
+    "./src/index",
+    "babel-polyfill"
   ],
   output: {
     path: __dirname + '/build',
@@ -14,8 +15,16 @@ module.exports = {
     loaders: [
       {
         test: /\.js?$/,
-        loaders: ["react-hot-loader/webpack", 'babel-loader?presets[]=react,presets[]=es2015'],
-        exclude: /node_modules/
+        loaders: ["react-hot-loader/webpack", 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0'],
+        exclude: /node_modules/,
+        plugins: [ 
+          'transform-decorators-legacy', 
+          'syntax-async-functions', 
+          'transform-async-to-generator',
+          "transform-regenerator",
+          'transform-runtime',{"polyfill": false}
+          ],
+        
       },
 
       {
