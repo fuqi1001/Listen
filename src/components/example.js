@@ -24,8 +24,27 @@ var OuterComponent = React.createClass({
                 <div>
                     <strong>{this.state.name}</strong>
                 </div>  
+                <div>
+                    <TestRefs />
+                </div>
             </div>
         );
+    }
+});
+
+var TestRefs = React.createClass({
+    handleChange(e) {
+        var user = this.refs.user;
+        var name = this.refs.name;
+        name.innerHTML = user.value;
+    },
+    render: function() {
+        return (
+            <div>
+                <input type="text" ref="user" placeholder="your name" onChange={this.handleChange} />
+                <p>Hello <span ref="name"></span></p>
+            </div>
+        )
     }
 });
 
