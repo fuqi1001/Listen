@@ -6,7 +6,7 @@ import Links from './components/links.js';
 import Start from './components/start.js';
 import Guide from './components/guide.js';
 import How from './components/how.js';
-
+import Example from './components/example.js';
 class App extends Component {
     render() {
         return (
@@ -15,6 +15,7 @@ class App extends Component {
                     <Route path="/start" component={Start} />
                     <Route path="/how" component={How} />
                     <Route path="/guide" component={Guide} />
+                    <Route path="/example" component={Example} />
                 </Route>
             </Router>
         );

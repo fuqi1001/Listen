@@ -10,6 +10,8 @@ let Links = React.createClass({
                         <li><Link to="/start" activeStyle={{ color: '#3498db' }}>Start</Link></li>
                         <li><Link to="/how" activeStyle={{ color: '#3498db' }}>How</Link></li>
                         <li><Link to="/guide" activeStyle={{ color: '#3498db' }}>Guide</Link></li>
+                        <li><Link to="/example" activeStyle={{ color: '#3498db' }}>Example</Link></li>
+                        
                     </ul>
                 </aside>
                 <div className="page main">
