@@ -21,11 +21,9 @@ let Guide = React.createClass({
         console.log(this.state);
     },
     shouldComponentUpdate(){
-        //alert("update")
     },
 
     render() {
-        //console.log(this);
         return (
             <div>
                 <video controls autoPlay="autoplay" name="media" loop src={this.state.link}>
